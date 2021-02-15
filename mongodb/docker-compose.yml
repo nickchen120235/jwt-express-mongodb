@@ -10,6 +10,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: admin
       MONGO_INITDB_DATABASE: jwt
+    volumes: ['db:/data/db']
 
   express:
     image: mongo-express
@@ -18,3 +19,6 @@ services:
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: admin
       ME_CONFIG_MONGODB_ADMINPASSWORD: admin
+
+volumes: 
+  db: {}
