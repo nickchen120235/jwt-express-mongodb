@@ -6,9 +6,13 @@ import login from './route/login'
 import protectedRoute from './route/protected'
 import verifyToken from './util/validate-token'
 
+const DBHOST = process.env.DBHOST || 'localhost:27017'
+const DBUSER = process.env.DBUSER || 'admin'
+const DBPASS = process.env.DBPASS || 'admin'
+
 const app = express()
 app.use(express.json())
-mongoose.connect('mongodb://admin:admin@127.0.0.1:27017/jwt',
+mongoose.connect(`mongodb://${DBUSER}:${DBPASS}@${DBHOST}/jwt`,
   {useNewUrlParser: true, useUnifiedTopology: true},
   () => console.log('Connected to database.')
 )
